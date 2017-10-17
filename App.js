@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, AppRegistry} from 'react-native';
+import Style from './Style';
+import {
+    StyleSheet,
+    Text,
+    View,
+    AppRegistry} from 'react-native';
 
 export default class ReactCalculator extends React.Component {
   render() {
     return (
-        <View style={{flex: 1}}> 
-            <View style={{flex: 2, backgroundColor: '#193441'}}></View>
-            <View style={{flex: 8, backgroundColor: '#3E606F'}}></View>
+        <View style={{flex: 1}}>
+            <View style={Style.displayContainer}></View>
+            <View style={Style.inputContainer}></View>
         </View>
 
 

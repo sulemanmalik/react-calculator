@@ -41,14 +41,24 @@ s
                 let input = row[i];
 
                 inputRow.push(
-                    <InputButton value={input} key={r + "-" + i} />
+                    <InputButton value={input}
+                                 onPress={this._onInputButtonPressed.bind(this, input)}
+                                 key={r + "-" + i} />
                 );
             }
+
+
 
             views.push(<View style={Style.inputRow} key={"row-" + r}>{inputRow}</View>)
         }
 
+
+
         return views;
+    }
+
+    _onInputButtonPressed(input) {
+        alert(input)
     }
 
 }

@@ -20,7 +20,9 @@ export default class ReactCalculator extends React.Component {
         super(props);
 
         this.state = {
-            inputValue: 0
+            previousInputValue: 0,
+            inputValue: 0,
+            selectedSymbol: null
         }
     }
 
@@ -55,9 +57,11 @@ s
                 let input = row[i];
 
                 inputRow.push(
-                    <InputButton value={input}
-                                 onPress={this._onInputButtonPressed.bind(this, input)}
-                                 key={r + "-" + i} />
+                    <InputButton
+                        value={input}
+                        highlight={this.state.selectedSymbol === input}
+                        onPress={this._onInputButtonPressed.bind(this, input)}
+                        key={r + "-" + i}/>
                 );
             }
 
@@ -75,6 +79,8 @@ s
         switch (typeof input) {
             case 'number':
                 return this._handleNumberInput(input)
+            case 'string':
+                return this._handleStringInput(input)
         }
     }
 
@@ -84,6 +90,36 @@ s
         this.setState({
             inputValue: inputValue
         })
+    }
+
+    _handleStringInput(str) {
+        switch (str) {
+            case '/':
+            case '*':
+            case '+':
+            case '-':
+                this.setState({
+                    selectedSymbol: str,
+                    previousInputValue: this.state.inputValue,
+                    inputValue: 0
+                });
+                break;
+            case '=':
+                let symbol = this.state.selectedSymbol,
+                    inputValue = this.state.inputValue,
+                    previousInputValue = this.state.previousInputValue;
+
+                if (!symbol) {
+                    return;
+                }
+
+                this.setState({
+                    previousInputValue: 0,
+                    inputValue: eval(previousInputValue + symbol + inputValue),
+                    selectedSymbol: null
+                });
+                break;
+        }
     }
 
 }

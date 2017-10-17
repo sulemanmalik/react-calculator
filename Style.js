@@ -43,6 +43,9 @@ var Style = StyleSheet.create({
     inputRow: {
         flex: 1,
         flexDirection: 'row'
+    },
+    inputButtonHighlighted: {
+        backgroundColor: '#193441'
     }
 
 });

@@ -21,7 +21,7 @@ export default class ReactCalculator extends React.Component {
             <View style={Style.rootContainer}>
                 <View style={Style.displayContainer}></View>
                 <View style={Style.inputContainer}>
-                    {this._renderInputButtons().map( (views) => {return (<View>{views} </View>);}) }
+                    {this._renderInputButtons()}
                 </View>
             </View>
         )

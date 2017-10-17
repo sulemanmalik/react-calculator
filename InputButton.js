@@ -10,8 +10,10 @@ import Style from './Style';
 
 export default class InputButton extends Component {
     render() {
-        <View style={Style.inputButton}>
-            <Text style={Style.inputButtonText}>{this.props.value}</Text>
-        </View>
+        return(
+            <View style={Style.inputButton}>
+                <Text style={Style.inputButtonText}>{this.props.value}</Text>
+             </View>
+        )
     }
 }
